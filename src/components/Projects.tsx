@@ -1,19 +1,78 @@
 import React from 'react';
-import { Eye, Github, ArrowRight, Zap, Target, Award } from 'lucide-react';
+import { ArrowRight, Zap, Target, Award, Star } from 'lucide-react';
+
+type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  highlights?: string[];
+  featured?: boolean;
+};
+
+type Category = {
+  name: string;
+  projects: Project[];
+};
+
+const categories: Category[] = [
+  {
+    name: 'Core Machine Learning & Computer Vision',
+    projects: [
+      {
+        title: 'I-Masking – Aadhaar Compliance Automation',
+        description:
+          'Built a large-scale computer vision system to automatically detect and mask sensitive Aadhaar information in document images for regulatory compliance. Implemented a YOLO-based object detection pipeline and high-throughput image processing workflow using Python and OpenCV. Processed over 120 million images in production. Developed REST APIs using Django and stored audit metadata in MongoDB.',
+        technologies: ['Python', 'YOLO', 'OpenCV', 'Django REST Framework', 'MongoDB'],
+        highlights: ['Featured Project', '120M+ Images Processed', 'Production Scale'],
+        featured: true
+      },
+      {
+        title: 'I-Vision – Invoice Intelligence System',
+        description:
+          'Developed an end-to-end machine learning pipeline to automate invoice digitization and structured data extraction. Implemented YOLO and FastRCNN for layout detection and SpaCy for entity extraction. Designed annotation workflows and deployed using Django on IIS. Received Innovation of the Month award (2024).',
+        technologies: ['Python', 'YOLO', 'FastRCNN', 'SpaCy', 'Django'],
+        highlights: ['Innovation of the Month (2024)']
+      },
+      {
+        title: 'OVD – KYC Document Intelligence (Vision-Language Model)',
+        description:
+          'Built an automated document intelligence system using Vision-Language Model (Qwen 2.5-VL 3B) integrated via Ollama. Converted unstructured document images into structured JSON outputs for banking workflows.',
+        technologies: ['Python', 'Django', 'Ollama', 'Vision-Language Models']
+      }
+    ]
+  },
+  {
+    name: 'Classical Machine Learning',
+    projects: [
+      {
+        title: 'Handwritten Character Recognition System',
+        description:
+          'Developed an SVM-based classification model trained on 500,000+ handwritten character samples. Applied preprocessing and feature extraction techniques and deployed the model for real-time inference.',
+        technologies: ['Python', 'Scikit-learn', 'SVM'],
+        highlights: ['500,000+ Samples', 'Real-time Inference']
+      }
+    ]
+  },
+  {
+    name: 'IoT & Systems Engineering',
+    projects: [
+      {
+        title: 'Baby Sensor – IoT Health Monitoring',
+        description:
+          'Developed IoT-based real-time monitoring system for newborn health parameters. Built backend services and integrated MongoDB with GCP for continuous data streaming.',
+        technologies: ['Node.js', 'MongoDB', 'GCP', 'Firebase']
+      },
+      {
+        title: 'TAP – IoT-Based Animal Monitoring',
+        description:
+          'Designed animal health monitoring system using Raspberry Pi and thermal cameras. Built backend services and deployed using AWS and Docker.',
+        technologies: ['Raspberry Pi', 'Node.js', 'AWS', 'Docker']
+      }
+    ]
+  }
+];
 
 const Projects: React.FC = () => {
-  const projects = [
-    {
-      title: 'Handwritten Recognition System',
-      description: 'A comprehensive machine learning project that recognizes handwritten text using Support Vector Machine (SVM) algorithm implemented in Python. The system includes advanced preprocessing techniques, feature extraction using HOG descriptors, and achieves 94% accuracy on test datasets.',
-      technologies: ['Python', 'SVM', 'OpenCV', 'Scikit-learn', 'NumPy', 'Computer Vision'],
-      image: 'https://images.pexels.com/photos/5726794/pexels-photo-5726794.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop',
-      github: '#',
-      demo: '#',
-      highlights: ['94% Accuracy', 'Real-time Processing', 'Production Ready']
-    }
-  ];
-
   const stats = [
     {
       icon: <Target size={24} />,
@@ -36,98 +95,81 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50" id="projects">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-16 animate-fade-in-up">
             Featured Projects & Achievements
           </h2>
 
-          {/* Stats Section */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {stats.map((stat, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 <div className={`bg-gradient-to-br ${stat.color} p-4 rounded-full w-fit mx-auto mb-4 animate-bounce-slow`}>
-                  <div className="text-white">
-                    {stat.icon}
-                  </div>
+                  <div className="text-white">{stat.icon}</div>
                 </div>
-                <div className="text-4xl font-bold text-gray-800 mb-2 animate-count-up">
-                  {stat.number}
-                </div>
+                <div className="text-4xl font-bold text-gray-800 mb-2 animate-count-up">{stat.number}</div>
                 <p className="text-gray-600 font-medium">{stat.label}</p>
               </div>
             ))}
           </div>
-          
-          <div className="grid gap-8">
-            {projects.map((project, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 group animate-fade-in-up"
-                style={{ animationDelay: `${600 + index * 200}ms` }}
-              >
-                <div className="md:flex">
-                  <div className="md:w-1/2 relative overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-64 md:h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="md:w-1/2 p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
-                    
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 mb-3">Key Highlights:</h4>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.highlights.map((highlight, highlightIndex) => (
-                          <span key={highlightIndex} className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium animate-pulse">
-                            {highlight}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
 
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 mb-3">Technologies Used:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span 
-                            key={techIndex} 
-                            className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors cursor-default"
-                          >
-                            {tech}
+          <div className="space-y-10">
+            {categories.map((category, categoryIndex) => (
+              <div key={category.name} className="animate-fade-in-up" style={{ animationDelay: `${categoryIndex * 200}ms` }}>
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">{category.name}</h3>
+                <div className="grid gap-6">
+                  {category.projects.map((project) => (
+                    <article
+                      key={project.title}
+                      className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-4">
+                        <h4 className="text-xl md:text-2xl font-bold text-gray-800">{project.title}</h4>
+                        {project.featured && (
+                          <span className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold whitespace-nowrap">
+                            <Star size={16} /> Featured
                           </span>
-                        ))}
+                        )}
                       </div>
-                    </div>
 
-                    <div className="flex space-x-4">
-                      <a 
-                        href={project.github}
-                        className="flex items-center space-x-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-all duration-300 hover:scale-105 group"
-                      >
-                        <Github size={18} className="group-hover:animate-spin" />
-                        <span>Code</span>
-                      </a>
-                      <a 
-                        href={project.demo}
-                        className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 hover:scale-105 group"
-                      >
-                        <Eye size={18} className="group-hover:animate-bounce" />
-                        <span>Demo</span>
-                      </a>
-                    </div>
-                  </div>
+                      <p className="text-gray-600 leading-relaxed mb-5">{project.description}</p>
+
+                      {project.highlights && (
+                        <div className="mb-5">
+                          <h5 className="text-sm font-semibold text-gray-700 mb-2">Highlights</h5>
+                          <div className="flex flex-wrap gap-2">
+                            {project.highlights.map((highlight) => (
+                              <span
+                                key={highlight}
+                                className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium"
+                              >
+                                {highlight}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div>
+                        <h5 className="text-sm font-semibold text-gray-700 mb-2">Technologies Used</h5>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors cursor-default"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </article>
+                  ))}
                 </div>
               </div>
             ))}
@@ -137,11 +179,11 @@ const Projects: React.FC = () => {
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-auto mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Project Portfolio</h3>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                With 15+ successfully completed projects and 10+ proof of concepts, I've consistently 
-                delivered innovative machine learning solutions that drive business value and technical excellence.
+                With 15+ successfully completed projects and 10+ proof of concepts, I&apos;ve consistently
+                delivered innovative machine learning and systems solutions with measurable business impact.
               </p>
             </div>
-            <a 
+            <a
               href="#"
               className="inline-flex items-center space-x-2 bg-blue-600 text-white px-8 py-4 rounded-full border-2 border-blue-600 hover:bg-white hover:text-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
             >
