@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowDown, Github, Linkedin, Mail, Sparkles, Code, Database, Cloud, Brain, Cpu, Zap } from 'lucide-react';
 
+const roles = ['Machine Learning Engineer', 'AI Developer', 'Data Scientist', 'Tech Innovator'];
+
 const Hero: React.FC = () => {
   const [currentRole, setCurrentRole] = useState(0);
-  const roles = ['Machine Learning Engineer', 'AI Developer', 'Data Scientist', 'Tech Innovator'];
 
   useEffect(() => {
     const interval = setInterval(() => {
