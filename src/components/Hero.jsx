@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 import './Hero.css';
-import { profile } from '../data/portfolioData';
+import { profile, contact } from '../data/portfolioData';
 import useCounter from '../hooks/useCounter';
+import { SiLinkedin, SiGithub } from 'react-icons/si';
 import {
     HeroShapeHex,
     HeroShapeCircle,
@@ -68,6 +69,14 @@ export default function Hero() {
                     {profile.title}
                 </p>
 
+                <p className="hero__company hero-animate" style={{ animationDelay: '0.38s' }}>
+                    @&nbsp;
+                    <a href={profile.companyUrl} target="_blank" rel="noopener noreferrer"
+                        className="hero__company-link">
+                        {profile.company}
+                    </a>
+                </p>
+
                 <p className="hero__tagline hero-animate" style={{ animationDelay: '0.44s' }}>
                     <span className="hero__cursor">{'>'}</span>&nbsp;{profile.tagline}
                 </p>
@@ -87,6 +96,25 @@ export default function Hero() {
                 <div className="hero__cta hero-animate" style={{ animationDelay: '0.68s' }}>
                     <a href="#projects" className="btn btn--primary">View Projects</a>
                     <a href="#about" className="btn btn--ghost">About Me</a>
+                </div>
+
+                <div className="hero__socials hero-animate" style={{ animationDelay: '0.80s' }}>
+                    <a href={contact.linkedin} target="_blank" rel="noopener noreferrer"
+                        className="hero__social" title="LinkedIn">
+                        <SiLinkedin />
+                    </a>
+                    <a href={contact.github} target="_blank" rel="noopener noreferrer"
+                        className="hero__social" title="GitHub">
+                        <SiGithub />
+                    </a>
+                    <a href={`mailto:${contact.email}`}
+                        className="hero__social" title={contact.email}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>

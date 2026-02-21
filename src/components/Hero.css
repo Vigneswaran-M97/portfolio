@@ -102,8 +102,28 @@
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 500;
     color: var(--accent);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     letter-spacing: 0.01em;
+}
+
+.hero__company {
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+}
+
+.hero__company-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dashed var(--border-hover);
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.hero__company-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 /* ── Tagline with blinking cursor ── */
@@ -174,6 +194,35 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+/* ── Social icon links ── */
+.hero__socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.hero__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.hero__social:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-light);
+    transform: translateY(-2px);
 }
 
 .btn {
@@ -221,6 +270,7 @@
     position: absolute;
     z-index: 0;
     pointer-events: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 

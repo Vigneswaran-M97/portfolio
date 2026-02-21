@@ -15,7 +15,7 @@ function ProjectCard({ project, delay }) {
             style={{ animationDelay: delay }}
         >
             {project.featured && (
-                <div className="project-card__featured-banner">★ Featured Project</div>
+                <div className="project-card__featured-banner">★ Present Project</div>
             )}
             {project.award && (
                 <div className="project-card__award">🏆 {project.award}</div>

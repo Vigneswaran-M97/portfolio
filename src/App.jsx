@@ -5,6 +5,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Awards from './components/Awards';
 import TechStack from './components/TechStack';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 import './animations.css';
@@ -37,6 +38,7 @@ export default function App() {
         <Projects />
         <Awards />
         <TechStack />
+        <Contact />
       </main>
       <Footer />
     </div>

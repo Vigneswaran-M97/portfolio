@@ -1,0 +1,189 @@
+.contact {
+    background: var(--bg-secondary);
+}
+
+/* ── Card grid ── */
+.contact__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+/* ── Card link wrapper ── */
+.contact-card__link {
+    text-decoration: none;
+    display: block;
+}
+
+/* ── Card ── */
+.contact-card {
+    --card-color: var(--accent);
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* left accent stripe on hover */
+.contact-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--card-color);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.2s ease;
+    border-radius: 0 2px 2px 0;
+}
+
+.contact-card__link:hover .contact-card {
+    border-color: color-mix(in srgb, var(--card-color) 40%, transparent);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--card-color) 15%, transparent);
+    transform: translateY(-2px);
+}
+
+.contact-card__link:hover .contact-card::before {
+    transform: scaleY(1);
+}
+
+/* Icon */
+.contact-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: color-mix(in srgb, var(--card-color) 10%, var(--bg-secondary));
+    border-radius: var(--radius-sm);
+    color: var(--card-color);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact-card__link:hover .contact-card__icon {
+    background: var(--card-color);
+    color: #fff;
+    transform: scale(1.08);
+}
+
+/* Text */
+.contact-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.contact-card__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+}
+
+.contact-card__value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Arrow */
+.contact-card__arrow {
+    margin-left: auto;
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.contact-card__link:hover .contact-card__arrow {
+    color: var(--card-color);
+    transform: translateX(4px);
+}
+
+/* ── CTA social buttons ── */
+.contact__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.contact__social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all 0.18s ease;
+    letter-spacing: 0.01em;
+}
+
+.contact__social-btn--linkedin {
+    background: #0077B5;
+    color: #fff;
+}
+
+.contact__social-btn--linkedin:hover {
+    background: #005f91;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 119, 181, 0.35);
+}
+
+.contact__social-btn--github {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.contact__social-btn--github:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Fallback for older browsers */
+@supports not (background: color-mix(in srgb, red 10%, blue)) {
+    .contact-card__icon {
+        background: var(--accent-light);
+    }
+
+    .contact-card__link:hover .contact-card {
+        border-color: var(--accent);
+        box-shadow: var(--shadow-md);
+    }
+}
+
+@media (max-width: 560px) {
+    .contact__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card__value {
+        font-size: 0.8rem;
+    }
+}

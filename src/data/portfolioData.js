@@ -1,6 +1,8 @@
 export const profile = {
   name: "Vigneswaran M",
   title: "Data Scientist",
+  company: "iSolve Technologies",
+  companyUrl: "https://isolve.in/",
   tagline: "Machine Learning  ·  Computer Vision  ·  Document Intelligence",
   about: `Data Scientist with 4+ years of experience building and deploying production-grade Machine Learning systems 
   in banking and large-scale document intelligence domains. Experienced in supervised learning, computer vision, 
@@ -13,6 +15,17 @@ export const profile = {
     { value: "3×", label: "Awards Won" },
   ],
 };
+
+export const contact = {
+  phone: "+91 8838607886",
+  email: "vigneswaran.maylsamy@gmail.com",
+  linkedin: "https://www.linkedin.com/in/vigneswaranm97",
+  linkedinLabel: "linkedin.com/in/vigneswaranm97",
+  github: "https://github.com/Vigneswaran-M97",
+  githubLabel: "github.com/Vigneswaran-M97",
+  location: "Chennai, India",
+};
+
 
 export const projectCategories = [
   {

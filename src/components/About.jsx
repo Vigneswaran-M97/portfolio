@@ -80,6 +80,17 @@ export default function About() {
                                     <span className="about__card-value">{value}</span>
                                 </div>
                             ))}
+                            <div className="about__card-row">
+                                <span className="about__card-label">Company</span>
+                                <a
+                                    href={profile.companyUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="about__card-value about__card-link"
+                                >
+                                    {profile.company} ↗
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

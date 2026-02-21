@@ -57,17 +57,51 @@
 }
 
 .navbar__link {
+    position: relative;
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.15s ease;
     letter-spacing: 0.01em;
+    padding-bottom: 2px;
 }
 
 .navbar__link:hover {
     color: var(--text-primary);
 }
+
+/* Active state */
+.navbar__link--active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Animated underline dot / bar */
+.navbar__link-indicator {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    transform-origin: left;
+    animation: indicatorSlide 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes indicatorSlide {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
 
 /* Theme toggle */
 .theme-toggle {
