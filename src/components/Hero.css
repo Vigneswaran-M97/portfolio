@@ -265,6 +265,40 @@
     transform: translateY(-1px);
 }
 
+.btn--download {
+    background: transparent;
+    color: #2f9e44;
+    border: 1px solid #2f9e44;
+    gap: 7px;
+}
+
+.btn--download:hover {
+    background: #2f9e44;
+    color: #fff;
+    border-color: #2f9e44;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(47, 158, 68, 0.3);
+}
+
+.btn--download svg {
+    transition: transform 0.2s ease;
+}
+
+.btn--download:hover svg {
+    transform: translateY(2px);
+}
+
+[data-theme="dark"] .btn--download {
+    color: #69db7c;
+    border-color: #69db7c;
+}
+
+[data-theme="dark"] .btn--download:hover {
+    background: #2f9e44;
+    color: #fff;
+    border-color: #2f9e44;
+}
+
 /* ── Decorative shape positions ── */
 .hero__deco {
     position: absolute;

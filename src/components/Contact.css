@@ -166,6 +166,42 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
+.contact__social-btn--cv {
+    background: transparent;
+    color: #2f9e44;
+    border: 1px solid #2f9e44;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact__social-btn--cv:hover {
+    background: #2f9e44;
+    color: #fff;
+    border-color: #2f9e44;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(47, 158, 68, 0.3);
+}
+
+.contact__social-btn--cv svg {
+    transition: transform 0.2s ease;
+}
+
+.contact__social-btn--cv:hover svg {
+    transform: translateY(2px);
+}
+
+[data-theme="dark"] .contact__social-btn--cv {
+    color: #69db7c;
+    border-color: #69db7c;
+}
+
+[data-theme="dark"] .contact__social-btn--cv:hover {
+    background: #2f9e44;
+    color: #fff;
+    border-color: #2f9e44;
+}
+
 /* Fallback for older browsers */
 @supports not (background: color-mix(in srgb, red 10%, blue)) {
     .contact-card__icon {
