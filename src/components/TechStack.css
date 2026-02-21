@@ -1,0 +1,128 @@
+.tech-stack {
+    background: var(--bg-primary);
+}
+
+.stack__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+/* ── Group card ── */
+.stack__group {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stack__group:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.stack__group-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.stack__group-icon {
+    display: flex;
+    align-items: center;
+    color: var(--accent);
+}
+
+.stack__group-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-secondary);
+}
+
+/* ── Skill badges ── */
+.stack__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.stack__item {
+    --brand: var(--accent);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    cursor: default;
+
+    /* smooth transition for all hover effects */
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.2s ease;
+}
+
+/* hover state: brand colour highlight */
+.stack__item:hover {
+    background: color-mix(in srgb, var(--brand) 12%, var(--bg-secondary));
+    border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+    color: var(--text-primary);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--brand) 20%, transparent);
+}
+
+/* logo icon inherits brand colour on hover */
+.stack__item-logo {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+    line-height: 1;
+}
+
+.stack__item:hover .stack__item-logo {
+    color: var(--brand);
+    transform: scale(1.15);
+}
+
+/* ── Dark mode adjustments ── */
+[data-theme="dark"] .stack__item:hover {
+    background: color-mix(in srgb, var(--brand) 16%, var(--bg-secondary));
+    border-color: color-mix(in srgb, var(--brand) 50%, transparent);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+
+/* Fallback for browsers without color-mix (Safari < 16.2) */
+@supports not (background: color-mix(in srgb, red 10%, blue)) {
+    .stack__item:hover {
+        background: var(--accent-light);
+        border-color: var(--accent);
+        box-shadow: 0 4px 12px rgba(89, 166, 255, 0.2);
+    }
+
+    .stack__item:hover .stack__item-logo {
+        color: var(--accent);
+    }
+}
+
+@media (max-width: 560px) {
+    .stack__grid {
+        grid-template-columns: 1fr;
+    }
+}

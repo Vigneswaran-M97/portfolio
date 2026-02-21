@@ -1,0 +1,112 @@
+.awards {
+    background: var(--bg-secondary);
+}
+
+.awards__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 640px;
+}
+
+.award-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: 32px;
+}
+
+.award-item:last-child {
+    padding-bottom: 0;
+}
+
+/* Vertical line connector */
+.award-item__connector {
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+}
+
+.award-item__icon {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.award-item__icon--pop {
+    animation: iconPop 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes iconPop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.award-item:hover .award-item__icon {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    transform: scale(1.1);
+}
+
+.award-item__content {
+    flex: 1;
+    padding-top: 6px;
+}
+
+.award-item__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.award-item__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.award-item__year {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: var(--font-mono);
+}
+
+.award-item__desc {
+    font-size: 0.845rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0;
+}
